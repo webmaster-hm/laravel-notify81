@@ -1,5 +1,5 @@
 {
-    "name": "tylercd100/laravel-notify",
+    "name": "tylercd100/laravel-notify81",
     "description": "",
     "keywords": [
         "laravel",
@@ -7,7 +7,7 @@
         "monolog",
         "tylercd100"
     ],
-    "homepage": "https://github.com/tylercd100/laravel-notify",
+    "homepage": "https://github.com/webmaster-hm/laravel-notify81",
     "license": "MIT",
     "authors": [
         {
