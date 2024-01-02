@@ -31,9 +31,7 @@
         "laravel/framework": "^10.0",
         "monolog/monolog": "^3.0",
         "php": "^7.2|^8.0|^8.1",
-        "psr/log": "^1.0",
-        "tylercd100/monolog-mailgun": "^3.0",
-        "tylercd100/monolog-sms":"^2.0"
+        "psr/log": "^1.0"
     },
     "require-dev": {
         "sentry/sentry-laravel": "^3.1.2",

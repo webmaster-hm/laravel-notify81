@@ -17,13 +17,14 @@ class MonologHandlerFactory
      * @param string $title
      * @return \Monolog\Handler\HandlerInterface
      */
-    public static function create($name, array $config = [], $title = null){
-        $handler = call_user_func([MonologHandlerFactory::class,$name], $config, $title);
+    public static function create($name, array $config = [], $title = null)
+    {
+        $handler = call_user_func([MonologHandlerFactory::class, $name], $config, $title);
 
         // Keep newline characters
-        $format = ['fleephook', 'mail', 'mailgun', 'pushover', 'slack', 'sentry'];
+        $format = ['fleephook', 'mail', 'pushover', 'slack', 'sentry'];
 
-        if(in_array($name, $format)) {
+        if (in_array($name, $format)) {
             $handler->setFormatter(new LineFormatter(null, null, true));
         }
 
@@ -40,7 +41,8 @@ class MonologHandlerFactory
      * @param  string $title The title/subject to use
      * @return \Monolog\Handler\PushoverHandler
      */
-    protected static function pushover(array $config = [], $title = null){
+    protected static function pushover(array $config = [], $title = null)
+    {
         $defaults = [
             "title" => null,
             "level" => Logger::DEBUG,
@@ -52,7 +54,7 @@ class MonologHandlerFactory
             "expire" => 25200
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         $c['title'] = $title;
 
@@ -66,38 +68,8 @@ class MonologHandlerFactory
             $c['highPriorityLevel'],
             $c['emergencyLevel'],
             $c['retry'],
-            $c['expire']);
-    }
-
-    /**
-     * Returns a PushoverHandler
-     * @param  array  $config An array of config values to use
-     * @param  string $title The title/subject to use
-     * @return \Tylercd100\Monolog\Handler\MailgunHandler
-     */
-    protected static function mailgun(array $config = [], $title = null){
-        $defaults = [
-            "title" => null,
-            "level" => Logger::CRITICAL,
-            "bubble" => true,
-            "host" => 'api.mailgun.net',
-            "version" => 'v3'
-        ];
-
-        $c = array_merge($defaults,$config);
-
-        $c['title'] = $title;
-
-        return new \Tylercd100\Monolog\Handler\MailgunHandler(
-            $c["to"],
-            $c["title"],
-            $c["from"],
-            $c["token"],
-            $c["domain"],
-            $c["level"],
-            $c["bubble"],
-            $c["host"],
-            $c["version"]);
+            $c['expire']
+        );
     }
 
     /**
@@ -106,18 +78,20 @@ class MonologHandlerFactory
      * @param  string $title The title/subject to use
      * @return \Monolog\Handler\FlowdockHandler
      */
-    protected static function flowdock(array $config = [], $title = null){
+    protected static function flowdock(array $config = [], $title = null)
+    {
         $defaults = [
             "level" => Logger::DEBUG,
             "bubble" => true,
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         return new \Monolog\Handler\FlowdockHandler(
             $c['token'],
             $c['level'],
-            $c['bubble']);
+            $c['bubble']
+        );
     }
 
     /**
@@ -126,18 +100,20 @@ class MonologHandlerFactory
      * @param  string $title The title/subject to use
      * @return \Monolog\Handler\FleepHookHandler
      */
-    protected static function fleephook(array $config = [], $title = null){
+    protected static function fleephook(array $config = [], $title = null)
+    {
         $defaults = [
             "level" => Logger::DEBUG,
             "bubble" => true,
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         return new \Monolog\Handler\FleepHookHandler(
             $c['token'],
             $c['level'],
-            $c['bubble']);
+            $c['bubble']
+        );
     }
 
     /**
@@ -146,7 +122,8 @@ class MonologHandlerFactory
      * @param  string $title The title/subject to use
      * @return \Tylercd100\Monolog\Handler\PlivoHandler
      */
-    protected static function plivo(array $config = [], $title = null){
+    protected static function plivo(array $config = [], $title = null)
+    {
         $defaults = [
             'level' => Logger::DEBUG,
             'bubble' => true,
@@ -156,7 +133,7 @@ class MonologHandlerFactory
             'limit' => 160,
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         return new \Tylercd100\Monolog\Handler\PlivoHandler(
             $c['token'],
@@ -168,7 +145,8 @@ class MonologHandlerFactory
             $c['useSSL'],
             $c['host'],
             $c['version'],
-            $c['limit']);
+            $c['limit']
+        );
     }
 
     /**
@@ -177,7 +155,8 @@ class MonologHandlerFactory
      * @param  string $title The title/subject to use
      * @return \Tylercd100\Monolog\Handler\TwilioHandler
      */
-    protected static function twilio(array $config = [], $title = null){
+    protected static function twilio(array $config = [], $title = null)
+    {
         $defaults = [
             'level' => Logger::DEBUG,
             'bubble' => true,
@@ -187,7 +166,7 @@ class MonologHandlerFactory
             'limit' => 160,
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         return new \Tylercd100\Monolog\Handler\TwilioHandler(
             $c['secret'],
@@ -199,7 +178,8 @@ class MonologHandlerFactory
             $c['useSSL'],
             $c['host'],
             $c['version'],
-            $c['limit']);
+            $c['limit']
+        );
     }
 
     /**
@@ -232,7 +212,8 @@ class MonologHandlerFactory
      * @param  string $title The title/subject to use
      * @return \Monolog\Handler\SlackHandler
      */
-    protected static function slack(array $config = [], $title = null){
+    protected static function slack(array $config = [], $title = null)
+    {
         $defaults = [
             'username' => 'Monolog',
             'useAttachment' => true,
@@ -243,7 +224,7 @@ class MonologHandlerFactory
             'includeContextAndExtra' => false
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         return new \Monolog\Handler\SlackHandler(
             $c['token'],
@@ -254,7 +235,8 @@ class MonologHandlerFactory
             $c['level'],
             $c['bubble'],
             $c['useShortAttachment'],
-            $c['includeContextAndExtra']);
+            $c['includeContextAndExtra']
+        );
     }
 
     /**
@@ -266,9 +248,9 @@ class MonologHandlerFactory
     protected static function mail(array $config = [], $title = null)
     {
         if (isset($config['smtp']) && $config['smtp']) {
-            return self::swiftMail($config,$title);
+            return self::swiftMail($config, $title);
         } else {
-            return self::nativeMail($config,$title);
+            return self::nativeMail($config, $title);
         }
     }
 
@@ -285,7 +267,7 @@ class MonologHandlerFactory
             'bubble' => true
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         $c['title'] = $title;
 
@@ -316,7 +298,7 @@ class MonologHandlerFactory
             'maxColumnWidth' => 70
         ];
 
-        $c = array_merge($defaults,$config);
+        $c = array_merge($defaults, $config);
 
         $c['title'] = $title;
 

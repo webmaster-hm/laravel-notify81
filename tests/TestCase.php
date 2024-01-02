@@ -49,9 +49,9 @@ class TestCase extends Orchestra
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('notify',[
+        $app['config']->set('notify', [
 
-            'channel'=>'Tylercd100\Notify',
+            'channel' => 'Tylercd100\Notify',
 
             /**
              * The drivers to use
@@ -60,7 +60,6 @@ class TestCase extends Orchestra
                 'fleephook',
                 'flowdock',
                 'mail',
-                'mailgun',
                 'plivo',
                 'pushover',
                 'sentry',
@@ -71,26 +70,16 @@ class TestCase extends Orchestra
             /**
              * Mail settings
              */
-            'mail'=>[
-                'to'  =>'to@address.com',
-                'from'=>'from@address.com',
-                'smtp'=>true,
-            ],
-
-            /**
-             * Mailgun settings
-             */
-            'mailgun'=>[
-                'to'  =>'to@address.com',
-                'from'=>'from@address.com',
-                'token' => 'token',
-                'domain'=> 'test.com',
+            'mail' => [
+                'to'  => 'to@address.com',
+                'from' => 'from@address.com',
+                'smtp' => true,
             ],
 
             /**
              * Pushover settings
              */
-            'pushover'=>[
+            'pushover' => [
                 'token' => "Token",
                 'users' => [
                     "User",
@@ -101,7 +90,7 @@ class TestCase extends Orchestra
             /**
              * Sentry settings
              */
-            'sentry'=>[
+            'sentry' => [
                 'dsn'    => null,
                 'level'  => 'error',
             ],
@@ -109,30 +98,30 @@ class TestCase extends Orchestra
             /**
              * Slack settings
              */
-            'slack'=>[
+            'slack' => [
                 'token'   => "Token",
                 'channel' => "Value",
-                'username'=> "Value",
+                'username' => "Value",
             ],
 
             /**
              * Flowdock settings
              */
-            'flowdock'=>[
+            'flowdock' => [
                 'token' => "Token",
             ],
 
             /**
              * Fleephook settings
              */
-            'fleephook'=>[
+            'fleephook' => [
                 'token' => "Token",
             ],
 
             /**
              * Plivo settings
              */
-            'plivo'=>[
+            'plivo' => [
                 'auth_id' => "Value",
                 'token'   => "Token",
                 'to'      => "Value",
@@ -142,7 +131,7 @@ class TestCase extends Orchestra
             /**
              * Twilio settings
              */
-            'twilio'=>[
+            'twilio' => [
                 'sid'    => "Value",
                 'secret' => "Value",
                 'to'     => "Value",

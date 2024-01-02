@@ -3,7 +3,6 @@
 namespace Tylercd100\Notify\Tests;
 
 use Tylercd100\Notify\Drivers\FromConfig as Notify;
-use Tylercd100\Notify\Drivers\Mailgun;
 use Tylercd100\Notify\Drivers\Mail;
 use Tylercd100\Notify\Drivers\Plivo;
 use Tylercd100\Notify\Drivers\Pushover;
@@ -12,7 +11,6 @@ use Tylercd100\Notify\Drivers\FleepHook;
 use Tylercd100\Notify\Drivers\Sentry;
 use Tylercd100\Notify\Drivers\Slack;
 use Tylercd100\Notify\Drivers\Twilio;
-use Tylercd100\Notify\Facades\Mailgun as MailgunFacade;
 use Tylercd100\Notify\Facades\Mail as MailFacade;
 use Tylercd100\Notify\Facades\Notify as NotifyFacade;
 use Tylercd100\Notify\Facades\Plivo as PlivoFacade;
@@ -25,59 +23,64 @@ use Tylercd100\Notify\Facades\FleepHook as FleepHookFacade;
 
 class FacadeTest extends TestCase
 {
-    public function testPushoverFacade(){
+    public function testPushoverFacade()
+    {
         $obj = PushoverFacade::getFacadeRoot();
-        $this->assertInstanceOf(Pushover::class,$obj);
+        $this->assertInstanceOf(Pushover::class, $obj);
     }
 
-    public function testFlowdockFacade(){
+    public function testFlowdockFacade()
+    {
         $obj = FlowdockFacade::getFacadeRoot();
-        $this->assertInstanceOf(Flowdock::class,$obj);
+        $this->assertInstanceOf(Flowdock::class, $obj);
     }
 
-    public function testFleepHookFacade(){
+    public function testFleepHookFacade()
+    {
         $obj = FleepHookFacade::getFacadeRoot();
-        $this->assertInstanceOf(FleepHook::class,$obj);
+        $this->assertInstanceOf(FleepHook::class, $obj);
     }
 
-    public function testPlivoFacade(){
+    public function testPlivoFacade()
+    {
         $obj = PlivoFacade::getFacadeRoot();
-        $this->assertInstanceOf(Plivo::class,$obj);
+        $this->assertInstanceOf(Plivo::class, $obj);
     }
 
-    public function testTwilioFacade(){
+    public function testTwilioFacade()
+    {
         $obj = TwilioFacade::getFacadeRoot();
-        $this->assertInstanceOf(Twilio::class,$obj);
+        $this->assertInstanceOf(Twilio::class, $obj);
     }
 
-    public function testSentryFacade(){
+    public function testSentryFacade()
+    {
         $obj = SentryFacade::getFacadeRoot();
-        $this->assertInstanceOf(Sentry::class,$obj);
+        $this->assertInstanceOf(Sentry::class, $obj);
     }
 
-    public function testMailgunFacade(){
-        $obj = MailgunFacade::getFacadeRoot();
-        $this->assertInstanceOf(Mailgun::class,$obj);
-    }
-
-    public function testSlackFacade(){
+    public function testSlackFacade()
+    {
         $obj = SlackFacade::getFacadeRoot();
-        $this->assertInstanceOf(Slack::class,$obj);
+        $this->assertInstanceOf(Slack::class, $obj);
     }
 
-    public function testNotifyFacade(){
+    public function testNotifyFacade()
+    {
         $obj = NotifyFacade::getFacadeRoot();
-        $this->assertInstanceOf(Notify::class,$obj);
+        $this->assertInstanceOf(Notify::class, $obj);
     }
 
-    public function testMailFacade(){
+    public function testMailFacade()
+    {
         $obj = MailFacade::getFacadeRoot();
-        $this->assertInstanceOf(Mail::class,$obj);
+        $this->assertInstanceOf(Mail::class, $obj);
     }
 
-    public function testMailFacadeWithNoSmtp(){
-        config()->set('notify.mail.smtp',false);
+    public function testMailFacadeWithNoSmtp()
+    {
+        config()->set('notify.mail.smtp', false);
         $obj = MailFacade::getFacadeRoot();
-        $this->assertInstanceOf(Mail::class,$obj);
+        $this->assertInstanceOf(Mail::class, $obj);
     }
 }
