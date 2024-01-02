@@ -29,7 +29,7 @@
     "prefer-stable": true,
     "require": {
         "laravel/framework": "^10.0",
-        "monolog/monolog": "^3.5.0",
+        "monolog/monolog": "^2.0",
         "php": "^7.2|^8.0|^8.1",
         "psr/log": "^1.0",
         "tylercd100/monolog-mailgun": "^3.0",
